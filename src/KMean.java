@@ -1,8 +1,5 @@
 import java.util.*;
 
-class Sample{}
-class Cluster{}
-
 public class KMean {
     private Double prevVariance;
     private List<Cluster> clusters;
