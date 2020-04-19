@@ -1,7 +1,6 @@
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 public class Cluster {
     private final Sample center;
     private final Set<Sample> includedSamples;
