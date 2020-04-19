@@ -4,10 +4,10 @@ class Sample{}
 class Cluster{}
 
 public class KMean {
-    private double prevVariance;
+    private Double prevVariance;
     private List<Cluster> clusters;
     private int K;
-    private double variance;
+    private Double variance;
     private List<Sample> samples;
 
     KMean(List<Sample> _samples, int _K){
@@ -18,7 +18,30 @@ public class KMean {
     /**
      * Iterate a number of times until variance does not change a lot
      */
-    private void optimize(){}
+    private void optimize(){
+        randomPickSample();
+        assignSamples();
+        prevVariance = computeVariance();
+        while(variance == None){
+            generateNewClusters();
+            assignSamples();
+            variance = computeVariance();
+            if(terminationCondition()) break;
+        }
+    }
+
+    /**
+     * Compute centers of clusters then create new empty clusters with these clusters
+     */
+    private void generateNewClusters(){
+
+    }
+
+    /**
+     * Compare prevVariance and variance, if difference small enough, then return true
+     * @return
+     */
+    private boolean terminationCondition(){ return false;}
 
     /**
      * Assign all samples to current clusters according to distances
