@@ -15,9 +15,31 @@ public class KMean {
         K = _K;
     }
 
+    /**
+     * Iterate a number of times until variance does not change a lot
+     */
     private void optimize(){}
 
-    private void assignSamples(){}
+    /**
+     * Assign all samples to current clusters according to distances
+     */
+    private void assignSamples(){
+        for(Sample sample : samples){
+            if(sample.isAssigned) continue;
+            Cluster bestCluster = clusters.get(0);
+            double bestDistance = Sample.getDistance(sample, bestCluster.center);
+            for(int i = 1; i < clusters.length(); i ++){
+                double currentDistance = Sample.getDistance(sample, clusters.get(i));
+                if(bestDistance > currentDistance){
+                    bestDistance = currentDistance;
+                    bestCluster = clusters.get(i);
+                }
+            }
+            bestCluster.add(sample);
+            sample.setAssigned(true);
+        }
+    }
+
 
     // compute current sum of variance
     private double computeVariance(){
@@ -50,10 +72,23 @@ public class KMean {
     }
 
 
+
+    // OUTPUT METHODS BELOW
+
+    /**
+     * @return results' variance
+     */
     double getVariance(){ return variance;}
 
+    /**
+     *
+     * @return list of results' clusters
+     */
     List<Cluster> getResult(){ return null;}
 
-    // write results to cvs
-    void writeToFile(){}
+    /**
+     * Write results to csv
+     * @param path
+     */
+    void writeToFile(String path){}
 }
