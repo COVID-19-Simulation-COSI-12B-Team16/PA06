@@ -24,6 +24,14 @@ public class Sample {
         }
         return Math.sqrt(squreSum);
     }
+
+    public int dimension() {
+        return dimension;
+    }
+
+    public double[] getCoordinate() {
+        return coordinate.clone(); // Prevent possible outside modification
+    }
     
     @Override
     public String toString() {
