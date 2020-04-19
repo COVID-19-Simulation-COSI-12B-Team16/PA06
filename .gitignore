@@ -1,5 +1,5 @@
 *
 !src/*
-!.gitignore
+.gitignore
 .idea/
 PA06.iml
