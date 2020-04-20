@@ -32,6 +32,7 @@ public class Cluster {
             Sample s = it.next();
             result += s.distanceTo(center);
         }
+//        System.out.println("Cluster Variance: " + result);
         return result;
     }
 
