@@ -2,7 +2,11 @@ Data retrieved from http://cs.joensuu.fi/sipu/datasets/
 
 **Results**
 
-We used python to visualize computed results, as follows. Where balck dots are original samples and red dots are computed cluster centers.
+Cluter centers are written to `result/s1-cb.txt`, `result/s2-cb.txt`, `result/s3-cb.txt` and `result/s4-cb.txt`, after running the `Main.java` class.
+
+We also wrote a python script `plotter.py` to the visualize computed results, where original samples were plotted as black dots and computed cluster centers were plotted red.
+
+To regenerate diagrams based on new results, simply run ```python plotter.py```
 
 ![this is an image](image/s1-plot.png "s1")
 ![this is an image](image/s2-plot.png "s2")
