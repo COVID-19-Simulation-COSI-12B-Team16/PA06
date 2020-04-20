@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class KMean {
-    private static final double threshold = 0.01;
+    private static final double threshold = 1E-20;
     private Double prevVariance;
     private List<Cluster> clusters;
     private int K;
@@ -11,6 +11,7 @@ public class KMean {
     KMean(List<Sample> _samples, int _K){
         samples = _samples;
         K = _K;
+        optimize();
     }
 
     /**
@@ -20,7 +21,7 @@ public class KMean {
         randomPickSample();
         assignSamples();
         prevVariance = computeVariance();
-        while(variance == null){
+        while(true){
             generateNewClusters();
             assignSamples();
             variance = computeVariance();
@@ -45,7 +46,9 @@ public class KMean {
      * @return
      */
     private boolean terminationCondition(){
-        return Math.abs(prevVariance - variance) / variance < KMean.threshold;
+        double abs = Math.abs(prevVariance - variance);
+        if(abs == 0) return true;
+        return abs  / variance < KMean.threshold;
     }
 
     /**
@@ -74,6 +77,7 @@ public class KMean {
             Cluster cur = clusters.get(i);
             sum += cur.variance();
         }
+//        System.out.println("Sum of variance : " + sum);
         variance = sum;
         return sum;
     }
