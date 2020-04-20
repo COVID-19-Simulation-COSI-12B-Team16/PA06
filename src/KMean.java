@@ -54,9 +54,9 @@ public class KMean {
     private void assignSamples(){
         for(Sample sample : samples){
             Cluster bestCluster = clusters.get(0);
-            double bestDistance = sample.distanceTo(bestCluster.center);
-            for(int i = 1; i < clusters.length(); i ++){
-                double currentDistance = sample.distanceTo(clusters.get(i));
+            double bestDistance = sample.distanceTo(bestCluster.getCenter());
+            for(int i = 1; i < clusters.size(); i ++){
+                double currentDistance = sample.distanceTo(clusters.get(i).getCenter());
                 if(bestDistance > currentDistance){
                     bestDistance = currentDistance;
                     bestCluster = clusters.get(i);
