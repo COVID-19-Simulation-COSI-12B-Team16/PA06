@@ -13,6 +13,10 @@ To regenerate diagrams based on new results, simply run ```python plotter.py```
 ![this is an image](image/s3-plot.png "s3")
 ![this is an image](image/s4-plot.png "s4")
 
+**Class Diagram**
+
+![this is an image](image/class-diagram.png "s4")
+
 
 **Reflections:**
 
