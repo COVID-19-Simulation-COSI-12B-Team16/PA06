@@ -10,6 +10,10 @@ public class Cluster {
         includedSamples = new HashSet<>();
     }
 
+    public Sample getCenter(){
+        return center;
+    }
+
     public void add(Sample s) {
         if (s == null || s.dimension() != center.dimension()) {
             try {
