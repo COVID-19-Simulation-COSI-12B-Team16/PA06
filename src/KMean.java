@@ -48,18 +48,16 @@ public class KMean {
      */
     private void assignSamples(){
         for(Sample sample : samples){
-            if(sample.isAssigned) continue;
             Cluster bestCluster = clusters.get(0);
-            double bestDistance = Sample.getDistance(sample, bestCluster.center);
+            double bestDistance = sample.distanceTo(bestCluster.center);
             for(int i = 1; i < clusters.length(); i ++){
-                double currentDistance = Sample.getDistance(sample, clusters.get(i));
+                double currentDistance = sample.distanceTo(clusters.get(i));
                 if(bestDistance > currentDistance){
                     bestDistance = currentDistance;
                     bestCluster = clusters.get(i);
                 }
             }
             bestCluster.add(sample);
-            sample.setAssigned(true);
         }
     }
 
@@ -90,8 +88,6 @@ public class KMean {
             Cluster c = new Cluster(samples.get(index)); // the constructor of Cluster must take a sample variable
             clusters.add(c);
         }
-
-
     }
 
 
@@ -107,11 +103,13 @@ public class KMean {
      *
      * @return list of results' clusters
      */
-    List<Cluster> getResult(){ return null;}
+    List<Cluster> getResult(){ return clusters;}
 
     /**
      * Write results to csv
      * @param path
      */
-    void writeToFile(String path){}
+    void writeToFile(String path){
+
+    }
 }
