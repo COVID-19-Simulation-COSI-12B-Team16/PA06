@@ -24,6 +24,7 @@ public class KMean {
             assignSamples();
             variance = computeVariance();
             if(terminationCondition()) break;
+            prevVariance = variance;
         }
     }
 
