@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class KMean {
@@ -114,10 +117,24 @@ public class KMean {
     List<Cluster> getResult(){ return clusters;}
 
     /**
-     * Write results to csv
+     * Write results (coordinate of centers) to csv
      * @param path
      */
     void writeToFile(String path){
-
+        try {
+            File file = new File(path);
+            file.delete();
+            file.createNewFile();
+            FileWriter fw = new FileWriter(file);
+            for (Cluster c: this.clusters) {
+                Sample center = c.getCenter();
+                double[] coordinate = center.getCoordinate();
+                String toWrite = String.format("%d\s%d\n", (int)coordinate[0], (int)coordinate[1]);
+                fw.write(toWrite);
+            }
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
