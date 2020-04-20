@@ -33,7 +33,11 @@ public class KMean {
      * Compute centers of clusters then create new empty clusters with these clusters
      */
     private void generateNewClusters(){
-
+        List<Cluster> res = new ArrayList<>();
+        for(int i = 0; i < K ; i++) {
+            res.add(new Cluster(clusters.get(i).newCenter()));
+        }
+        clusters = res;
     }
 
     /**
@@ -68,17 +72,15 @@ public class KMean {
         double sum = 0;
         for(int i = 0; i < K; i++) {
             Cluster cur = clusters.get(i);
-            for(int j = 0; j < cur.getSamples().size(); j++) {
-                sum += getDistance(cur.getCenter(), cur.getSamples().get(j));
-            }
+            sum += cur.variance();
         }
-
+        variance = sum;
         return sum;
     }
 
     private void randomPickSample(){
         Random random = new Random();
-        List<Sample> res = new ArrayList<>();
+        List<Cluster> res = new ArrayList<>();
         Set<Integer> set = new HashSet<>();
         for(int i = 0; i < K; i++) {
             int index = random.nextInt(samples.size());
@@ -87,8 +89,9 @@ public class KMean {
             }
             set.add(index);
             Cluster c = new Cluster(samples.get(index)); // the constructor of Cluster must take a sample variable
-            clusters.add(c);
+            res.add(c);
         }
+        clusters = res;
     }
 
 
