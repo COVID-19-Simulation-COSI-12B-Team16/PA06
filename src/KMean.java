@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class KMean {
+    private static final double threshold = 0.01;
     private Double prevVariance;
     private List<Cluster> clusters;
     private int K;
@@ -39,7 +40,9 @@ public class KMean {
      * Compare prevVariance and variance, if difference small enough, then return true
      * @return
      */
-    private boolean terminationCondition(){ return false;}
+    private boolean terminationCondition(){
+        return Math.abs(prevVariance - variance) / variance < KMean.threshold;
+    }
 
     /**
      * Assign all samples to current clusters according to distances
