@@ -19,7 +19,7 @@ public class KMean {
         randomPickSample();
         assignSamples();
         prevVariance = computeVariance();
-        while(variance == None){
+        while(variance == null){
             generateNewClusters();
             assignSamples();
             variance = computeVariance();
