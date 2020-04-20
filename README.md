@@ -5,9 +5,9 @@ Data retrieved from http://cs.joensuu.fi/sipu/datasets/
 We used python to visualize computed results, as follows. Where balck dots are original samples and red dots are computed cluster centers.
 
 ![this is an image](result/s1-plot.png "s1")
-![this is an image](result/s2-plot.png "s1")
-![this is an image](result/s3-plot.png "s1")
-![this is an image](result/s4-plot.png "s1")
+![this is an image](result/s2-plot.png "s2")
+![this is an image](result/s3-plot.png "s3")
+![this is an image](result/s4-plot.png "s4")
 
 
 **Reflections:**
